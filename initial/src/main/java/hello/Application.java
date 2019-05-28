@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RSpringBootApplication
+@SpringBootApplication
 @RestController
 public class Application {
 	public static void main(String[] args) {
