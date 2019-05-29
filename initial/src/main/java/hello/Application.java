@@ -1,9 +1,16 @@
 package hello;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 @RestController
@@ -15,5 +22,18 @@ public class Application {
     @RequestMapping("/")
     public String home() {
         return "Hello Docker World!!!!";
+    }
+    
+    @RequestMapping("/test")
+    public String test() {
+    	String url = "http://gs-spring-boot-docker:8080/";
+    	HttpHeaders headers = new HttpHeaders();
+    	Map<String, String> params = new HashMap<String, String>();
+    	HttpEntity entity = new HttpEntity(headers);
+
+    	RestTemplate restTemplate = new RestTemplate();
+    	HttpEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class, params);
+
+        return response.getBody();
     }
 }
