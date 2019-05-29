@@ -36,4 +36,32 @@ public class Application {
 
         return response.getBody();
     }
+    
+    // gs-spring-boot-docker-1.jx
+    @RequestMapping("/jx")
+    public String jx() {
+    	String url = "http://gs-spring-boot-docker-1.jx:8080/";
+    	HttpHeaders headers = new HttpHeaders();
+    	Map<String, String> params = new HashMap<String, String>();
+    	HttpEntity entity = new HttpEntity(headers);
+
+    	RestTemplate restTemplate = new RestTemplate();
+    	HttpEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class, params);
+
+        return response.getBody();
+    }
+    
+    // gs-spring-boot-docker-1.jx
+    @RequestMapping("/jx2")
+    public String jx2() {
+    	String url = "http://gs-spring-boot-docker-1.jx.svc.cluster.local:8080/";
+    	HttpHeaders headers = new HttpHeaders();
+    	Map<String, String> params = new HashMap<String, String>();
+    	HttpEntity entity = new HttpEntity(headers);
+
+    	RestTemplate restTemplate = new RestTemplate();
+    	HttpEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class, params);
+
+        return response.getBody();
+    }
 }
